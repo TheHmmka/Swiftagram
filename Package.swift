@@ -18,8 +18,12 @@ let package = Package(
                .library(name: "SwiftagramCrypto",
                         targets: ["SwiftagramCrypto"])],
     // Package dependencies.
-    dependencies: [.package(url: "https://github.com/sbertix/ComposableRequest", .upToNextMinor(from: "5.3.1")),
+//    dependencies: [.package(url: "https://github.com/sbertix/ComposableRequest", .upToNextMinor(from: "5.3.1")),
+//                   .package(url: "https://github.com/sbertix/SwCrypt.git", .upToNextMinor(from: "5.1.0"))],
+    
+    dependencies: [.package(url: "../ComposableRequest", .upToNextMinor(from: "5.3.1")),
                    .package(url: "https://github.com/sbertix/SwCrypt.git", .upToNextMinor(from: "5.1.0"))],
+    
     // All targets.
     targets: [.target(name: "Swiftagram",
                       dependencies: [.product(name: "Requests", package: "ComposableRequest"),

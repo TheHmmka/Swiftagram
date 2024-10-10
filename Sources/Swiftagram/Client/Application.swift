@@ -35,7 +35,7 @@ public extension Client {
         ///     - version: A valid `String`. Defaults to _"121.0.0.29.119"_.
         ///     - code: A valid `String`. Defaults to _"185203708"_.
         /// - returns: A valid `Client`.
-        public static func iOS(_ version: String = "160.1.0.31.120", code: String = "246979827") -> Application {
+        public static func iOS(_ version: String = "302.0.0.13.111", code: String = "246979827") -> Application {
             .init(version: version, code: code)
         }
 
