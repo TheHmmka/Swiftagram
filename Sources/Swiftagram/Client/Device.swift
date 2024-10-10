@@ -82,8 +82,8 @@ public extension Client {
             if software.version.contains("iOS") {
                 // Return an iOS browser user agent.
                 return ["Mozilla/5.0 (iPhone; CPU iPhone OS \(software.version.replacingOccurrences(of: "iOS ", with: "")) like Mac OS X)",
-                        "AppleWebKit/602.1 (KHTML, like Gecko)",
-                        "Version/10.0 Mobile/14E5239e Safari/602.1"]
+                        "AppleWebKit/605.1.15 (KHTML, like Gecko)",
+                        "Version/16.0 Mobile/15E148 Safari/602.1"]
                     .joined(separator: " ")
             } else if software.version.contains("/") {
                 // Return an Android browser user agent.
