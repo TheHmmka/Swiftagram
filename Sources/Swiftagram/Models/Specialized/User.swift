@@ -64,6 +64,7 @@ public struct User: Wrapped {
     public var category: String? { self["category"].string() }
     /// A lower quality avatar.
     public var thumbnail: URL? { self["profilePicUrl"].url() }
+    
     /// An higher quality avatar.
     public var avatar: URL? {
         self["hdProfilePicVersions"]
@@ -133,6 +134,24 @@ public extension User {
             self.wrapper = wrapper
         }
     }
+    
+    /// A `struct` representing a `User`.
+    public struct Viewer: Specialized {
+        
+        /// The underlying `Response`.
+        public var wrapper: () -> Wrapper
+        
+        public var hasLiked: Bool? { self["hasLiked"].bool() }
+        
+        /// The user.
+        public var user: User? { self["user"].optional().flatMap(User.init) }
+        
+        /// Init.
+        /// - parameter wrapper: A valid `Wrapper`.
+        public init(wrapper: @escaping () -> Wrapper) {
+            self.wrapper = wrapper
+        }
+    }
 
     /// A `struct` representing a `User` collection.
     struct Collection: Specialized, StringPaginatable {
@@ -141,6 +160,9 @@ public extension User {
 
         /// The users.
         public var users: [User]? { self["users"].array()?.map(User.init) }
+        
+        /// Story likers.
+        public var viewers: [Viewer]? { self["viewers"].array()?.map(Viewer.init) }
         
         /// Story likers.
         public var storyLikers: [User]? { self["storyLikers"].array()?.map(User.init) }
