@@ -141,6 +141,9 @@ public extension User {
 
         /// The users.
         public var users: [User]? { self["users"].array()?.map(User.init) }
+        
+        /// Story likers.
+        public var storyLikers: [User]? { self["storyLikers"].array()?.map(User.init) }
 
         /// Init.
         /// - parameter wrapper: A valid `Wrapper`.
