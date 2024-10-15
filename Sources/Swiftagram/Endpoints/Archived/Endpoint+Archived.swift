@@ -59,6 +59,7 @@ public extension Endpoint.Group.Archived {
                     .header(appending: secret.header)
                     .header(appending: rank, forKey: "rank_token")
                     .query(appending: $0, forKey: "max_id")
+                    .query(appending: "200", forKey: "count")
                     .publish(with: session)
                     .map(\.data)
                     .wrap()

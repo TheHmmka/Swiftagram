@@ -8,12 +8,10 @@
 import Foundation
 
 public extension Endpoint.Group {
-    /// Группа эндпоинтов для работы с Reels Media.
     struct ReelsMedia { }
 }
 
 public extension Endpoint {
-    /// Обертка для доступа к эндпоинтам Reels Media.
     static let reelsMedia: Endpoint.Group.ReelsMedia = .init()
 }
 
@@ -33,6 +31,7 @@ public extension Endpoint.Group.ReelsMedia {
                     .header(appending: rank, forKey: "rank_token")
                     .query(appending: ids.joined(separator: ","), forKey: "reel_ids")
                     .query(appending: $0, forKey: "max_id")
+                    .query(appending: Count, forKey: "count")
                     .publish(with: session)
                     .map(\.data)
                     .wrap()

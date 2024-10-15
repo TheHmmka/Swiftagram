@@ -7,6 +7,8 @@
 
 import Foundation
 
+public let Count: String = "200"
+
 /// A module-like `enum` defining all possible `Endpoint`s.
 public enum Endpoint {
     // swiftlint:disable line_length
