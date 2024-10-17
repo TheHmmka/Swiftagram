@@ -156,9 +156,34 @@ public extension Endpoint.Group.User {
         }
     }
 
+//    /// A list of posts uploaded by the user.
+//    var posts: Endpoint.Paginated < Swiftagram.Media.Collection,
+//                                  String?,
+//                                  Error> {
+//        .init { secret, session, pages in
+//            Pager(pages) {
+//                Request.version1.feed
+//                    .user
+//                    .path(appending: self.identifier)
+//                    .header(appending: secret.header)
+//                    .query(appending: ["exclude_comment": "false",
+//                                       "only_fetch_first_carousel_media": "false"])
+//                    .query(appending: $0, forKey: "max_id")
+//                    .query(appending: Count, forKey: "count")
+//                    .query(appending: Count, forKey: "limit")
+//                    .publish(with: session)
+//                    .map(\.data)
+//                    .wrap()
+//                    .map(Swiftagram.Media.Collection.init)
+//                    .iterateFirst(stoppingAt: $0)
+//            }
+//            .replaceFailingWithError()
+//        }
+//    }
+    
     /// A list of posts uploaded by the user.
     var posts: Endpoint.Paginated < Swiftagram.Media.Collection,
-                                  String?,
+                                RankedOffset<String?, String?>,
                                   Error> {
         .init { secret, session, pages in
             Pager(pages) {
